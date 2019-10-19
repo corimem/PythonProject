@@ -9,24 +9,20 @@ R=(int(len(img)))
 
 if rot=='90' or rot=='180' or rot=='270' or rot=='mirror':
     if rot=='90':
-        editimg=np.zeros((C,R,3),dtype=int)
-        for i in range(R):
-            for j in range(C):
-                editimg[j][i] = img[i][j]
+        editimg=[[img[j][i] for j in range(R)] for i in range(C-1,-1,-1)]
+        editimg=np.asarray(editimg)
     if rot=='180':
         editimg=np.zeros((R,C,3), dtype=int)
         for i in range(R):
             for j in range(C):
                 editimg[i, C-1-j] = img[R-1-i, j]
     if rot=='270':
-        editimg1=np.zeros((C,R,3),dtype=int)
+        editimg=np.zeros((R,C,3), dtype=int)
         for i in range(R):
             for j in range(C):
-                editimg1[j][i] = img[i][j]
-        editimg=np.zeros((C,R,3), dtype=int)
-        for i in range(R):
-            for j in range(C):
-                editimg[C-1-j, i] = editimg1[j,R-1-i]
+                editimg[i, C-1-j] = img[R-1-i, j]
+        editimg=[[editimg[j][i] for j in range(R)] for i in range(C-1,-1,-1)]
+        editimg=np.asarray(editimg)
     if rot=='mirror':
         editimg=np.zeros((R,C,3), dtype=int)
         for i in range(R):
