@@ -26,11 +26,11 @@ if rot=='90' or rot=='180' or rot=='270' or rot=='mirror':
     if rot=='mirror':
         editimg=np.zeros((R,C,3), dtype=int)
         for i in range(R):
-            editimg[C-1-j, i] = editimg[j,R-1-i]
+            for j in range(C):
+                editimg[i][j]=img[i][-j]
 else: print('error: invalid input. Enter a 90,180,270, or mirror')
 
 editimg=editimg.astype(np.uint8)    
 cv2.imshow('image', editimg)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-
