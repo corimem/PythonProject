@@ -75,7 +75,7 @@ def smooth(R,C,img,editimg):
 
 
                 #
-                return editimg
+    return editimg
 
 
 # defines the function to rotate the image taking the number of rowsm the number of columns, the data of the image, and the copy of the image to edit as arguments 
