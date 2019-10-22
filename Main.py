@@ -11,7 +11,6 @@ editimg=img.copy()
 C=(int(len(img[0])))
 R=(int(len(img)))
 
-
 def smooth(R,C,img,editimg):
     for a in range(1,R-2):
         for b in range(1,C-2):
@@ -54,7 +53,6 @@ def rotate(R,C,img,editimg):
                 editimg[i][j]=img[i][-j]
     return editimg
 
-
 #define a function "gray()" that manipulates each R,B, and G value and adds them together into one value
 #This creates a two dimensional gray scale matrix
 def gray(R,C,img,editimg):
@@ -63,7 +61,6 @@ def gray(R,C,img,editimg):
             editimg[i][j]=img[i][j][0]*(299/1000)+img[i][j][1]*(587/1000)+img[i][j][2]*(114/1000)
     
     return editimg
-
 
 if do == 'R':
     editimg=rotate(R,C,img,editimg)
@@ -75,11 +72,3 @@ if do == 'S':
 cv2.imshow('image',editimg)
 cv2.waitKey(0)
 cv2.destroyAllWindows() 
-
-
-
-degree=input('Enter how many degrees you want to rotate. Enter 90, 180, 270 or mirror: ')
-
-
-while degree.lower()!='mirror' and degree!='90' and degree!='180' and degree!='270':
-        degree=input('Enter how many degrees you want to rotate. Enter 90, 180, 270 or mirror: ')
