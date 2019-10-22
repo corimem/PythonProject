@@ -3,6 +3,7 @@
 
 
 
+
 #opens modules used, cv2 for image viewing and saving, numpy for matrix manipulations
 
 import cv2
