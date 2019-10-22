@@ -1,9 +1,5 @@
 
 
-
-
-
-
 #opens modules used, cv2 for image viewing and saving, numpy for matrix manipulations
 
 import cv2
@@ -26,7 +22,7 @@ while variable=='False':
     #defines the variable as a string as false if the file is not is not in the directory and True if the file is acceptable 
     variable=str(os.path.isfile(name))
 
-#defines the variable do   that allows the user to input what they want to do 
+#defines the variable do  that allows the user to input what they want to do 
 do=input('What do you want to do to the image? Input R for rotate, G for grayscale, or S for smooth: ') 
 
 
@@ -77,9 +73,6 @@ def smooth(R,C,img,editimg):
 
                 [((img[a+1][b-1][d])),((img[a+1][b][d])),((img[a+1][b+1][d]))]]))))
 
-                #puts edited image data in correct type for viewing            
-
-                editimg=editimg.astype(np.uint8)   
 
                 #
                 return editimg
@@ -132,8 +125,8 @@ def rotate(R,C,img,editimg):
 # if the user enters 270 degres then it runs the code to rotate it 270 degrees 
     if rot=='270':
 
-            #
-        editimg=np.zeros((R,C,3), dtype=int)
+         #
+        editimg1=np.zeros((R,C,3), dtype=int)
 
     # runs the loop for the number of rows 
         for i in range(R):
@@ -142,16 +135,18 @@ def rotate(R,C,img,editimg):
             for j in range(C):
 
                 #
-                editimg[i, C-1-j] = img[R-1-i, j]
-
-        #runs the loop for the number of rows
+                editimg1[i, C-1-j] = img[R-1-i, j]
+        
+        
+        editimg=np.zeros((C,R,3), dtype=int)
+        
         for j in range(R):
 
             #
             for i in range(C-1,-1,-1):  
 
-                #
-                    editimg[i][j]=img[j][-i] 
+                    #
+                    editimg[i][j]=editimg1[j][-i] 
 
     #if the user inputs mirror then it will run code to mirror the immage 
     if rot=='mirror':
@@ -213,7 +208,11 @@ if do == 'S'or do == 's':
     editimg=smooth(R,C,img,editimg)
 
 
-#
+#puts edited image data in correct type for viewing            
+
+editimg=editimg.astype(np.uint8)   
+
+                
 cv2.imshow('image',editimg)
 
 #
@@ -224,5 +223,3 @@ cv2.destroyAllWindows()
 
 #
 cv2.imwrite('editedimage.jpg',editimg)
-
-
