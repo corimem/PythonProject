@@ -1,3 +1,4 @@
+
 import numpy as np
 import cv2
 name= input('input name of image:')
@@ -9,8 +10,10 @@ R=(int(len(img)))
 
 if rot=='90' or rot=='180' or rot=='270' or rot=='mirror':
     if rot=='90':
-        editimg=[[img[j][i] for j in range(R)] for i in range(C-1,-1,-1)]
-        editimg=np.asarray(editimg)
+        editimg=np.zeros((C,R,3), dtype=int)
+        for j in range(R):
+            for i in range(C-1,-1,-1):  
+                    editimg[i][j]=img[j][-i] 
     if rot=='180':
         editimg=np.zeros((R,C,3), dtype=int)
         for i in range(R):
@@ -21,8 +24,9 @@ if rot=='90' or rot=='180' or rot=='270' or rot=='mirror':
         for i in range(R):
             for j in range(C):
                 editimg[i, C-1-j] = img[R-1-i, j]
-        editimg=[[editimg[j][i] for j in range(R)] for i in range(C-1,-1,-1)]
-        editimg=np.asarray(editimg)
+        for j in range(R):
+            for i in range(C-1,-1,-1):  
+                    editimg[i][j]=img[j][-i] 
     if rot=='mirror':
         editimg=np.zeros((R,C,3), dtype=int)
         for i in range(R):
