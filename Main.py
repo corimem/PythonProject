@@ -1,15 +1,19 @@
-#prompts user for image path and opens image in a seperate window. Closes 
+#opens modules used, cv2 for image viewing and saving, numpy for matrix manipulations
 import cv2
 import numpy as np
 
+#prompts user to input the name of the image file and the what they want to do to the image
 name=input('input name of image: ')
 do=input('What do you want to do to the image? Input R for rotate, G for grayscale or S for smooth:')
-
+#reads image
 img=cv2.imread(name)
+#saves a copy of the image for manipulation
 editimg=img.copy()
-
+#gets number of columns in image
 C=(int(len(img[0])))
+#gets number of rows in image
 R=(int(len(img)))
+
 
 def smooth(R,C,img,editimg):
     for a in range(1,R-2):
