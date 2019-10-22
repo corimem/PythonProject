@@ -76,3 +76,4 @@ if do == 'S':
 cv2.imshow('image',editimg)
 cv2.waitKey(0)
 cv2.destroyAllWindows() 
+cv2.imwrite('editedimage',editimg)
