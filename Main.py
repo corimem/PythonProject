@@ -60,8 +60,8 @@ def rotate(R,C,img,editimg):
 #define a function "gray()" that manipulates each R,B, and G value and adds them together into one value
 #This creates a two dimensional gray scale matrix
 def gray(R,C,img,editimg):
-    for i in range(0,len(img)):
-        for j in range(0,len(img[i])):            
+    for R in range(0,len(img)):
+        for C in range(0,len(img[i])):            
             editimg[i][j]=img[i][j][0]*(299/1000)+img[i][j][1]*(587/1000)+img[i][j][2]*(114/1000)
     
     return editimg
