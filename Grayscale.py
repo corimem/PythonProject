@@ -16,6 +16,6 @@ def gray():
 
 #Use OpenCV to display the image to a file named image.
 img = gray()
-cv2.imshow('Purdue_arch_600x308',img)
+cv2.imshow(name,img)
 cv2.waitKey(0)
 cv2.destroyAllWindows() 
