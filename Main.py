@@ -34,7 +34,7 @@ def smooth(R,C,img,editimg):
 def rotate(R,C,img,editimg):
     
     rot=input('Enter how many degrees you want to rotate. Enter 90, 180, 270 or mirror: ')
-    while rot.lower()!='mirror' and degree!='90' and degree!='180' and degree!='270':
+    while rot.lower()!='mirror' and rot!='90' and rot!='180' and rot!='270':
         rot=input('Enter how many degrees you want to rotate. Enter 90, 180, 270 or mirror: ')
     if rot=='90':
         editimg=np.zeros((C,R,3), dtype=int)
@@ -80,4 +80,4 @@ if do == 'S':
 cv2.imshow('image',editimg)
 cv2.waitKey(0)
 cv2.destroyAllWindows() 
-cv2.imwrite('editedimage',editimg)
+cv2.imwrite('editedimage.jpg',editimg)
