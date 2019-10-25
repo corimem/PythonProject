@@ -67,10 +67,10 @@ def smooth(R,C,img,editimg):
         for b in range(1,C-2):
 
         
-#           loops through the elements of each row and colum for R G B values for each pixel
+#           loops through the elements of each row and column for R G B values for each pixel
             for d in range(0,2):                
 
-                # 
+                # averages the values in a 3x3 square centered around each pixel and assigns that as the corresponding value in the edited image
                 editimg[a][b][d]=(np.sum((1/9)*(np.array(                    
 
                 [[((img[a-1][b-1][d])),((img[a-1][b][d])),((img[a-1][b+1][d]))],
@@ -105,17 +105,17 @@ def rotate(R,C,img,editimg):
     if rot=='90':
 
 
-        #
+        #creates a blank array of the roated dimensions
         editimg=np.zeros((C,R,3), dtype=int)
 
 
         #itterates through the range of the number of rows 
         for j in range(R):
 
-            #
+            #itterates through the rows backwards
             for i in range(C-1,-1,-1):  
 
-                    #
+                    #assigns easch value to new position in edited image
                     editimg[i][j]=img[j][-i] 
 
 
@@ -123,7 +123,7 @@ def rotate(R,C,img,editimg):
     if rot=='180':
 
 
-        #
+        #creates a blank array with the original dimensions of the image 
         editimg=np.zeros((R,C,3), dtype=int)
 
         
@@ -135,26 +135,21 @@ def rotate(R,C,img,editimg):
             for j in range(C):
 
                 
-                #
+               #assigns easch value to new position in edited image
                 editimg[i, C-1-j] = img[R-1-i, j]
 
 # if the user enters 270 degres then it runs the code to rotate it 270 degrees 
     if rot=='270':
-
-
-         #
+#performs 180 rotation from above, followed by 90 rotation from above
         editimg1=np.zeros((R,C,3), dtype=int)
 
-    # runs the loop for the number of rows 
+ 
         for i in range(R):
 
-
-            #runs the loops for the number of columns
+        
             for j in range(C):
 
 
-
-                #
                 editimg1[i, C-1-j] = img[R-1-i, j]
 
 
@@ -163,16 +158,16 @@ def rotate(R,C,img,editimg):
 
         for j in range(R):
             
-            #
+            
             for i in range(C-1,-1,-1):  
 
-                    #
+                    
                     editimg[i][j]=editimg1[j][-i] 
 
     #if the user inputs mirror then it will run code to mirror the immage 
     if rot=='mirror':
 
-        #
+        #creates a blank array of the original dimensions
         editimg=np.zeros((R,C,3), dtype=int)
 
     #runs the loop for the number of rows 
@@ -181,7 +176,7 @@ def rotate(R,C,img,editimg):
             #runs the loop for the number of columns
             for j in range(C):
 
-                #
+                ##assigns easch value to new position in edited image
                 editimg[i][j]=img[i][-j]
 
     #returns the edited image 
