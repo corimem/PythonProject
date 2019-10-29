@@ -87,7 +87,10 @@ while variable=='False':
 
     variable=str(os.path.isfile(name))
 
-    
+    if variable =='True':
+       
+       name=name
+       break
 
 
 
